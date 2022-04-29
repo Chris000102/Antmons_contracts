@@ -6,12 +6,17 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 abstract contract antmonsBase is Ownable,AccessControl,ERC721Enumerable{
     using SafeMath for uint;
     uint _id;
+    string public URI_PREFIX;
     bytes32 public constant MINT_ROLE = bytes32(uint(1));
     // constructor()ERC721("",""){
     //     _id = 1;
     //     grantRole(DEFAULT_ADMIN_ROLE,_msgSender());
     //     grantRole(MINT_ROLE,_msgSender());
     // }
+
+    function setPrefix(string memory prefix)public onlyOwner{
+        URI_PREFIX = prefix;
+    }
 
     function grantMintRole(address account)public onlyOwner{
         _grantRole(MINT_ROLE, account);
@@ -34,5 +39,9 @@ abstract contract antmonsBase is Ownable,AccessControl,ERC721Enumerable{
         for(uint index=0;index<amount;index++){
             incrementMint(to);
         }
+    }
+
+    function _baseURI() internal view override returns (string memory) {
+        return URI_PREFIX;
     }
 }
