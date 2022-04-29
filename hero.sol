@@ -1,5 +1,5 @@
 pragma solidity ^0.8.4;
-import "./lib/antmonsBase.sol";
+import "./lib/nftBase.sol";
 contract hero is antmonsBase{
     constructor()ERC721("Antmons NFT","Antmons NFT"){
         _grantRole(DEFAULT_ADMIN_ROLE,_msgSender());

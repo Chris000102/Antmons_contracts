@@ -1,5 +1,5 @@
 pragma solidity ^0.8.4;
-import "./lib/antmonsBase.sol";
+import "./lib/nftBase.sol";
 contract lootBox is antmonsBase{
     constructor(string memory name,string memory symbol)ERC721(name,symbol){//Antmons NFT Normal/Rare/Epic
         _id = 1;
